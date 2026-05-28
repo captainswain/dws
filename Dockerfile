@@ -1,4 +1,4 @@
-# Docker-Warp-Socks (fork) — Cloudflare WARP -> SOCKS5/HTTP proxy via sing-box.
+# Docker-Warp-Socks (forked) — Cloudflare WARP -> SOCKS5/HTTP proxy via sing-box.
 #
 # Hardened vs. upstream:
 #   * No runtime `curl bit.ly/... | sh`. Registration is vendored & local.

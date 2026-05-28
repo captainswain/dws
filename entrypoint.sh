@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#removed wack curls to bit.ly etc.
+
 set -e
 
 sleep 3
