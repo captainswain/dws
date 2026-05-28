@@ -1,4 +1,4 @@
-# docker-warp-socks (hardened fork)
+# docker-warp-socks 
 
 Connect to Cloudflare WARP and expose a `socks5`/`http` proxy, via userspace
 WireGuard in [sing-box](https://github.com/SagerNet/sing-box). No `NET_ADMIN`,
@@ -67,7 +67,7 @@ Change visibility → Public**.
 
 - [SagerNet/sing-box](https://github.com/SagerNet/sing-box)
 - [ViRb3/wgcf](https://github.com/ViRb3/wgcf)
-- Upstream: [Mon-ius/Docker-Warp-Socks](https://github.com/Mon-ius/Docker-Warp-Socks)
+- Upstream (sus calls to bit.ly, I wouldn't use): [Mon-ius/Docker-Warp-Socks](https://github.com/Mon-ius/Docker-Warp-Socks)
 
 ## Disclaimer
 
