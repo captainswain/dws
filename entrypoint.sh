@@ -13,6 +13,13 @@ _NET_PORT=9091
 WARP_SERVER="${WARP_SERVER:-$_WARP_SERVER}"
 WARP_PORT="${WARP_PORT:-$_WARP_PORT}"
 NET_PORT="${NET_PORT:-$_NET_PORT}"
+# Tunnel MTU. Cloudflare's own WARP client uses 1280. 1408 only fits where the host path carries
+# 1468-byte UDP datagrams (1408 + 60 of WireGuard/UDP/IPv4): on a pod network with MTU 1420 the
+# large incoming datagrams arrive as IP fragments, and where fragments are dropped every
+# connection that receives a full-size packet (any TLS handshake) stalls ~3 s until TCP shrinks
+# its segments. 1280 + 80 (IPv6 endpoint) = 1360 fits a 1420 path without fragmenting.
+WARP_MTU="${WARP_MTU:-1280}"
+case "$WARP_MTU" in ''|*[!0-9]*) echo "Error: WARP_MTU must be a number" >&2; exit 1 ;; esac
 
 # Local, vendored registrar — no runtime curl|sh, no opaque shortlink.
 RESPONSE=$(/usr/local/bin/create-cloudflare-warp)
@@ -107,7 +114,7 @@ PROXY_PART='
                     "reserved": '"$reserved"'
                 }
             ],
-            "mtu": 1408,
+            "mtu": '"$WARP_MTU"',
             "udp_fragment": true
         }
     ],

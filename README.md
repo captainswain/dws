@@ -39,6 +39,7 @@ curl -x http://127.0.0.1:9091     -fsSL https://www.cloudflare.com/cdn-cgi/trace
 | `WARP_LICENSE` | _(unset)_                      | Optional: attach a WARP+ key **you already own**.  |
 | `WARP_SERVER`  | `engage.cloudflareclient.com`  | WARP endpoint host.                                |
 | `WARP_PORT`    | `2408`                         | WARP endpoint port.                                |
+| `WARP_MTU`     | `1280`                         | Tunnel MTU. Lower than a host path of 1420 allows. |
 
 `WARP_LICENSE` binds the new account to an existing WARP+ subscription (the
 "share across up to 5 devices" model). It does not generate or farm a license;
